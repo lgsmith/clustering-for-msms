@@ -1,0 +1,46 @@
+{
+    "myprotein": {
+        "top_path": "3smp-apo-vac.prmtop",
+        "traj_paths": [
+            "traj-list.txt"
+        ],
+        "stride": 1,
+        "sel_resid_path": "all-res.txt",
+        "which_chis": "chi1",
+        "description": "all",
+        "tica_lags": [
+            10,
+            50,
+            100
+        ],
+        "var_cutoff": 0.9,
+        "n_clusters": [
+            10,
+            12,
+            15,
+            18,
+            20,
+            22,
+            25,
+            37,
+            50,
+            75,
+            100
+        ],
+        "chosen_tica_lag": 50,
+        "chosen_cluster_counts": [
+            22,
+            25,
+            27,
+            30,
+            32,
+            35
+        ],
+        "overwrite": true,
+        "out_stem": "myprotein-dihedrals",
+        "feat_traj_suff": ".npy",
+        "vamp_trials": 10,
+        "vamp_tts_frac": 0.5,
+        "trj_len_cutoff": null
+    }
+}
