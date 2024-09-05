@@ -18,17 +18,18 @@ To run these scripts you'll need a number of python packages, nearly all of whic
 
 Use the following command to get every dependency you need in one fell swoop:
 ```
-mamba create -n msms -c conda-forge mdtraj scipy jug pyemma deeptime mpi4py cython matplotlib jupyter-notebook
+mamba create -n msms -c conda-forge mdtraj scipy jug pyemma deeptime cython matplotlib jupyter-notebook pytables openmpi="MAJOR.MINOR.*=external_*"
 ```
 - `jug`: a package that allows task based concurrent workload management within python. Sometimes surprising, but often quite handy for a cluster reading files from a shared file-system.
 - `mdtraj`: probably a dependency of at least pyemma, but it is needed for the enspara install procedure described below.
 - `scipy`: obviously useful, needed for enspara, not sure whether it's a dependency of some of the other libraries listed here.
 - `pyemma`: the old 'Noe and Co.' msm construction library. Not always as great as deeptime anymore, and poorly maintained, but dihedral-based featurization still works and that's what we need from it.
 - `deeptime`: The new 'Noe and Co.' msm construction library. Situates itself as being your one-stop-shop for kinetic modeling \& ML, but doesn't have many biomolecule specific things like pyemma's featurization facilities.
-- `mpi4py`: a way for python programs to use an MPI for parallelism. Enspara uses this to achieve multinodal clustering (which is helpful because it allows you to use more IO bandwidth from multiple nodes to read your dataset).
 - `cython`: enspara has compiled components that use `cython` as the compiler.
 - `matplotlib`: Nice to have around.
 - `jupyter-notebook`: also nice to have around.
+- `mpi4py`: a way for python programs to use an MPI for parallelism. Enspara uses this to achieve multinodal clustering (which is helpful because it allows you to use more IO bandwidth from multiple nodes to read your dataset).
+- `openmpi="MAJOR.MINOR.*=external_*"`: You must replace MAJOR and MINOR version numbers with the major and minor versions associated with your cluster's local MPI install, probably obtainable via the `module` system. See the [mpi4py docs](https://mpi4py.readthedocs.io/en/stable/install.html#using-conda) for more details.
 
 You could also consider adding `scikit-learn` or other modules with other clustering codes; trying other clustering methods is a good idea, but isn't needed to get the scripts in this repository working.
   
